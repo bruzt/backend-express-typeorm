@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 
 import AddressModel from '../../models/AddressModel';
 
-export default async (req: Request, res: Response) => {
+export default async function list(req: Request, res: Response){
 
     try {
 

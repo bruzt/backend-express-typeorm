@@ -9,7 +9,7 @@ interface IParams {
     projectId: number;
 }
 
-export default async (req: Request, res: Response) => {
+export default async function store(req: Request, res: Response){
 
     const {
         userId,

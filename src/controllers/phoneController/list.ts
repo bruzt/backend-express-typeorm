@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 
 import PhoneModel from '../../models/PhoneModel';
 
-export default async (req: Request, res: Response) => {
+export default async function list(req: Request, res: Response){
 
     try {
         

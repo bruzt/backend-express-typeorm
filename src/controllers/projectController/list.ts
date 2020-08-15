@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import ProjectModel from '../../models/ProjectModel';
 
-export default async (req: Request, res: Response) => {
+export default async function list(req: Request, res: Response){
 
     try {
 

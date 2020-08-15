@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 
 import UserModel from '../../models/UserModel';
 
-export default async (req: Request, res: Response) => {
+export default async function update(req: Request, res: Response){
 
     const id = Number(req.params.id);
 
