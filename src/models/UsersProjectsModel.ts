@@ -3,6 +3,9 @@ import {
     Entity,
     PrimaryGeneratedColumn,
     ManyToOne,
+    CreateDateColumn,
+    UpdateDateColumn,
+    DeleteDateColumn,
 } from 'typeorm';
 
 import UserModel from './UserModel';
@@ -13,6 +16,15 @@ export default class UsersProjectsModel extends BaseEntity {
 
     @PrimaryGeneratedColumn()
     id!: number;
+
+    @CreateDateColumn()
+    createdAt!: Date;
+
+    @UpdateDateColumn()
+    updatedAt!: Date;
+
+    @DeleteDateColumn()
+    deletedAt?: Date;
 
     ///////////////////////////////
 

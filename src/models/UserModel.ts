@@ -39,7 +39,7 @@ export default class UserModel extends BaseEntity {
     updatedAt!: Date;
 
     @DeleteDateColumn()
-    deletedAt!: Date;
+    deletedAt?: Date;
     
     private tempPassword?: string;
 
