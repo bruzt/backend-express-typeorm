@@ -23,6 +23,8 @@ export default async (req: Request, res: Response) => {
         if(password) user.password = password;
 
         await user.save();
+
+        delete user.password;
     
         return res.json(user);
 
