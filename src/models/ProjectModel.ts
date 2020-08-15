@@ -35,5 +35,5 @@ export default class ProjectModel extends BaseEntity {
     ///////////////////////////////////
 
     @OneToMany(() => UsersProjectsModel, usersProjects => usersProjects.project)
-    usersProjects!: UsersProjectsModel[];
+    usersProjects?: UsersProjectsModel[];
 }

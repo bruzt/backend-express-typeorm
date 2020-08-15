@@ -71,5 +71,5 @@ export default class UserModel extends BaseEntity {
     phones?: PhoneModel[];
     
     @OneToMany(() => UsersProjectsModel, usersProjects => usersProjects.user)
-    usersProjects!: UsersProjectsModel[];
+    usersProjects?: UsersProjectsModel[];
 }
