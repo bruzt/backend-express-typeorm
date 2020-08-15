@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run prod",
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn src/server.ts",
-    "prod": "pm2 start ts-node -- --transpile-only src/server.ts",
+    "prod": "pm2 start --name backend-express-typeorm ts-node -- --transpile-only src/server.ts",
     "postprod": "pm2 monit",
     "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run",
     "migration:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert"
