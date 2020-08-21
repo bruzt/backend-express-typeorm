@@ -1,3 +1,16 @@
+import dotenv from 'dotenv';
+
+let env: string;
+if(process.env.NODE_ENV === 'production') env = '.env';
+else if(process.env.NODE_ENV === 'test') env = '.env.test';
+else env = '.env.dev';
+
+dotenv.config({
+    path: env
+});
+
+/////////////////////////////
+
 import express from 'express';
 
 import './database/connection';
