@@ -26,12 +26,33 @@ export default async function store(req: Request, res: Response){
         
         if(!project) return res.status(400).json({ message: 'Project not found' });
 
+        const userProject = await UsersProjectsModel.findOne({
+            user,
+            project
+        });
+
+        if(userProject){
+
+            if(userProject.deletedAt !== null) {
+
+                await userProject.recover();
+
+                return res.json(userProject);
+
+            } else {
+
+                return res.status(400).json({ message: 'User already assign to this project' });
+            }
+        }
+        
         const usersProjects = UsersProjectsModel.create({
             user,
             project
         });
 
         const newAssign = await usersProjects.save();
+
+        delete newAssign.user.password;
 
         return res.json(newAssign);
         
