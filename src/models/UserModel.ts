@@ -29,7 +29,7 @@ export default class UserModel extends BaseEntity {
     @Column()
     email!: string;
 
-    @Column({ select: false })
+    @Column()
     password!: string;
     
     @CreateDateColumn()
