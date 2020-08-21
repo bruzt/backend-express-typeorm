@@ -8,6 +8,7 @@ import usersProjectsController from './controllers/usersProjectsController';
 
 import addressControllerValidator from './validators/addressControllerValidator';
 import phoneControllerValidator from './validators/phoneControllerValidator';
+import projectControllerValidator from './validators/projectControllerValidator';
 
 const router = Router();
 
@@ -28,8 +29,8 @@ router.get('/phones', phoneController.list);
 router.post('/users/:userId/phones', phoneControllerValidator.store, phoneController.store);
 
 router.get('/projects', projectController.list);
-router.get('/projects/:id', projectController.show);
-router.post('/projects', projectController.store);
+router.get('/projects/:id', projectControllerValidator.show,projectController.show);
+router.post('/projects', projectControllerValidator.store, projectController.store);
 
 router.post('/users/:userId/projects/:projectId', usersProjectsController.store);
 
