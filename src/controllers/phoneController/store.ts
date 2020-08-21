@@ -1,23 +1,30 @@
 import { Request, Response } from 'express';
 
 import PhoneModel from '../../models/PhoneModel';
+import UserModel from '../../models/UserModel';
 
 export default async function store(req: Request, res: Response){
 
     const {
         phone,
-    } = req.body;
+    }: { phone: string; } = req.body;
 
-    const userId = req.params.userId as any;
+    const userId: number = req.params.userId as any;
 
     try {
+
+        const user = await UserModel.findOne({ id: userId });
+    
+        if(!user) return res.status(400).json({ message: 'User not found' });
         
         const addedPhone = PhoneModel.create({
             phone,
-            user: userId
+            user
         });
 
         const newPhone = await addedPhone.save();
+
+        delete newPhone.user;
         
         return res.json(newPhone);
 
