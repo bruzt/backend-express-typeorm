@@ -2,13 +2,19 @@ import { Request, Response } from 'express';
 
 import UserModel from '../../models/UserModel';
 
+interface IStoreUser {
+    name: string;
+    email: string;
+    password: string;
+}
+
 export default async function store(req: Request, res: Response){
 
     const {
         name,
         email,
         password
-    } = req.body;
+    }: IStoreUser = req.body;
 
     try {
 

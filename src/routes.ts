@@ -9,6 +9,7 @@ import usersProjectsController from './controllers/usersProjectsController';
 import addressControllerValidator from './validators/addressControllerValidator';
 import phoneControllerValidator from './validators/phoneControllerValidator';
 import projectControllerValidator from './validators/projectControllerValidator';
+import userControllerValidator from './validators/userControllerValidator';
 
 const router = Router();
 
@@ -18,9 +19,9 @@ router.get('/', (req, res) => {
 });
 
 router.get('/users', userController.list);
-router.get('/users/:id', userController.show);
-router.post('/users', userController.store);
-router.put('/users/:id', userController.update);
+router.get('/users/:id', userControllerValidator.show, userController.show);
+router.post('/users', userControllerValidator.store, userController.store);
+router.put('/users/:id', userControllerValidator.update, userController.update);
 
 router.get('/address', addressController.list);
 router.post('/users/:userId/address', addressControllerValidator.store, addressController.store);

@@ -4,11 +4,11 @@ import UserModel from '../../models/UserModel';
 
 export default async function show(req: Request, res: Response){
 
-    const { id } = req.params;
+    const id = Number(req.params.id);
 
     try {
         
-        const user = await UserModel.findOne(id, {
+        const user = await UserModel.findOne({ id }, {
             relations: ['address', 'phones', 'usersProjects', 'usersProjects.project']
         });
 
