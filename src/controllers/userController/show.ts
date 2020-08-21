@@ -9,12 +9,13 @@ export default async function show(req: Request, res: Response){
     try {
         
         const user = await UserModel.findOne(id, {
-            relations: ['address', 'phones', 'usersProjects']
+            relations: ['address', 'phones', 'usersProjects', 'usersProjects.project']
         });
 
         if(!user) return res.status(400).json({ message: 'User not found' });
 
-        user.usersProjects.forEach( (userProject) => delete userProject.user);
+        delete user.password;
+        delete user.tempPassword;
     
         return res.json(user);
 
