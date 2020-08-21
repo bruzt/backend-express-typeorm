@@ -5,16 +5,12 @@
   "main": "src/server.ts",
   "scripts": {
     "start": "npm run prod",
-
     "pretest": "npm run test:migration:run",
     "test": "cross-env NODE_ENV=test jest",
-
     "dev": "cross-env NODE_ENV=development ts-node-dev --transpile-only --ignore-watch node_modules --respawn src/server.ts",
-    
     "preprod": "npm run prod:migration:run",
     "prod": "cross-env NODE_ENV=production pm2 start --name backend-express-typeorm ts-node -- --transpile-only src/server.ts",
     "postprod": "pm2 monit",
-    
     "test:migration:run": "cross-env NODE_ENV=test ts-node ./node_modules/typeorm/cli.js migration:run",
     "test:migration:revert": "cross-env NODE_ENV=test ts-node ./node_modules/typeorm/cli.js migration:revert",
     "dev:migration:run": "cross-env NODE_ENV=development ts-node ./node_modules/typeorm/cli.js migration:run",
@@ -26,6 +22,7 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "celebrate": "^12.2.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
