@@ -6,6 +6,7 @@ import {
     CreateDateColumn,
     UpdateDateColumn,
     DeleteDateColumn,
+    Column,
 } from 'typeorm';
 
 import UserModel from './UserModel';
@@ -16,6 +17,9 @@ export default class UsersProjectsModel extends BaseEntity {
 
     @PrimaryGeneratedColumn()
     id!: number;
+
+    @Column()
+    status!: string;
 
     @CreateDateColumn()
     createdAt!: Date;
@@ -28,9 +32,9 @@ export default class UsersProjectsModel extends BaseEntity {
 
     ///////////////////////////////
 
-    @ManyToOne(() => UserModel, user => user.usersProjects, { eager: true })
+    @ManyToOne(() => UserModel, user => user.usersProjects)
     user!: UserModel;
 
-    @ManyToOne(() => ProjectModel, project => project.usersProjects, { eager: true })
+    @ManyToOne(() => ProjectModel, project => project.usersProjects)
     project!: ProjectModel;
 }
