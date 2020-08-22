@@ -18,7 +18,7 @@ export default async function show(req: Request, res: Response){
 
             project.usersProjects.forEach( (userProject) => {
                 delete userProject.user.password;
-                delete userProject.user.tempPassword;
+                //delete userProject.user.tempPassword;
             });
         }
 

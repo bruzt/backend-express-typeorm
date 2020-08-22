@@ -31,7 +31,7 @@ export default async function update(req: Request, res: Response){
         await user.save();
 
         delete user.password;
-        delete user.tempPassword;
+        //delete user.tempPassword;
         
         return res.json(user);
 

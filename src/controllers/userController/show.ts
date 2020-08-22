@@ -15,7 +15,7 @@ export default async function show(req: Request, res: Response){
         if(!user) return res.status(400).json({ message: 'User not found' });
 
         delete user.password;
-        delete user.tempPassword;
+        //delete user.tempPassword;
     
         return res.json(user);
 
