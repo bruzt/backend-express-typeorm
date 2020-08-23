@@ -17,7 +17,7 @@ export default class PhoneModel extends BaseEntity {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @Column()
+    @Column({ nullable: false })
     phone!: string;    
 
     @CreateDateColumn()
