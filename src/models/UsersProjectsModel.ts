@@ -19,7 +19,7 @@ export default class UsersProjectsModel extends BaseEntity {
     id!: number;
 
     @Column()
-    status!: string;
+    status?: string;
 
     @CreateDateColumn()
     createdAt!: Date;
@@ -28,7 +28,7 @@ export default class UsersProjectsModel extends BaseEntity {
     updatedAt!: Date;
 
     @DeleteDateColumn()
-    deletedAt?: Date;
+    deletedAt?: Date | null;
 
     ///////////////////////////////
 

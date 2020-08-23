@@ -28,14 +28,19 @@ export default async function store(req: Request, res: Response){
 
         const userProject = await UsersProjectsModel.findOne({
             user,
-            project
+            project 
+        },{
+            relations: ['user', 'project'],
+            withDeleted: true
         });
-
+        
         if(userProject){
 
             if(userProject.deletedAt !== null) {
 
                 await userProject.recover();
+
+                userProject.deletedAt = null;
 
                 return res.json(userProject);
 
@@ -51,7 +56,7 @@ export default async function store(req: Request, res: Response){
         });
 
         const newAssign = await usersProjects.save();
-
+        
         delete newAssign.user.password;
 
         return res.json(newAssign);
