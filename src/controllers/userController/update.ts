@@ -22,7 +22,7 @@ export default async function update(req: Request, res: Response){
         
         const user = await UserModel.findOne({ id });
 
-        if(!user) return res.json({ message: 'User not found' });
+        if(!user) return res.status(400).json({ message: 'User not found' });
 
         if(name) user.name = name;
         if(email) user.email = email;

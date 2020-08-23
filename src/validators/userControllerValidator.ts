@@ -18,7 +18,7 @@ export default {
         [Segments.BODY]: Joi.object().keys({
 
             name: Joi.string().required(),
-            email: Joi.string().required(),
+            email: Joi.string().email().required(),
             password: Joi.string().required(),
         }),
 
@@ -31,7 +31,7 @@ export default {
         [Segments.BODY]: Joi.object().keys({
 
             name: Joi.string(),
-            email: Joi.string(),
+            email: Joi.string().email(),
             password: Joi.string(),
         }).min(1),
 
