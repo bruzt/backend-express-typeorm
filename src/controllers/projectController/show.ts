@@ -4,11 +4,11 @@ import ProjectModel from '../../models/ProjectModel';
 
 export default async function show(req: Request, res: Response){
 
-    const { id } = req.params;
+    const id = Number(req.params.id);
 
     try {
 
-        const project = await ProjectModel.findOne(id, { 
+        const project = await ProjectModel.findOne({ id }, { 
             relations: ['usersProjects', 'usersProjects.user']
         });
 

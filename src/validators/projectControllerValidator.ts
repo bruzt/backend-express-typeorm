@@ -19,6 +19,7 @@ export default {
 
             title: Joi.string().required(),
             description: Joi.string().required(),
+            status: Joi.string(),
         }),
 
     }, {
